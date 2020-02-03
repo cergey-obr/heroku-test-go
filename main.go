@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"github.com/labstack/echo"
-	"net/http"
 	"os"
 )
 
@@ -11,12 +10,14 @@ func main() {
 	e := echo.New()
 
 	e.POST("/", func(c echo.Context) error {
-		request := c.Request()
+		m := echo.Map{}
+		if err := c.Bind(&m); err != nil {
+			return err
+		}
 
-		fmt.Println(request.Method)
-		fmt.Println(request.Body)
+		fmt.Println(m)
 
-		return c.String(http.StatusOK, "Hello, World!")
+		return c.JSON(200, m)
 	})
 
 	port := os.Getenv("PORT")
