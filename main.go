@@ -10,7 +10,9 @@ import (
 func main() {
 	e := echo.New()
 
-	e.GET("/", func(c echo.Context) error {
+	e.POST("/", func(c echo.Context) error {
+		fmt.Println(c.Request())
+
 		return c.String(http.StatusOK, "Hello, World!")
 	})
 
