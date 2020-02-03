@@ -19,5 +19,7 @@ func main() {
 		fmt.Println("$PORT not set")
 	}
 
+	fmt.Println("hello")
+
 	e.Logger.Fatal(e.Start(":" + port))
 }
