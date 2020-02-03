@@ -11,7 +11,10 @@ func main() {
 	e := echo.New()
 
 	e.POST("/", func(c echo.Context) error {
-		fmt.Println(c.Request())
+		request := c.Request()
+
+		fmt.Println(request.Method)
+		fmt.Println(request.Body)
 
 		return c.String(http.StatusOK, "Hello, World!")
 	})
