@@ -13,7 +13,7 @@ func main() {
 	e.POST("/", func(c echo.Context) error {
 		body := c.Request().Body
 		b, _ := ioutil.ReadAll(body)
-		fmt.Println(b)
+		fmt.Println(string(b))
 
 		return c.JSON(200, echo.Map{})
 	})
