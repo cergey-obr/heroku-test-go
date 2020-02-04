@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"github.com/labstack/echo"
-	"io/ioutil"
 	"os"
 )
 
@@ -11,9 +10,9 @@ func main() {
 	e := echo.New()
 
 	e.POST("/", func(c echo.Context) error {
-		body := c.Request().Body
-		b, _ := ioutil.ReadAll(body)
-		fmt.Println(string(b))
+		//payload := map[string]interface{}{}
+		data := c.FormValue("payload")
+		fmt.Println(data)
 
 		return c.JSON(200, echo.Map{})
 	})
